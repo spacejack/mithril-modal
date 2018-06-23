@@ -18,7 +18,7 @@ const Modal = function(v) {
 		onbeforeupdate(v) {
 			children = v.children
 		},
-		onbeforeremove: (vnode) => {
+		onbeforeremove() {
 			// Add a class with fade-out exit animation
 			dom.classList.add('hide')
 			return new Promise(r => {
