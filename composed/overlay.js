@@ -10,6 +10,7 @@ const Overlay = function() {
 	let dom
 	let children
 
+	// Container component we mount to a root-level DOM node
 	const OverlayContainer = {
 		view: () => children
 	}
@@ -21,12 +22,13 @@ const Overlay = function() {
 			dom = document.createElement('div')
 			dom.className = 'overlay'
 			document.body.appendChild(dom)
+			// Mount a separate VDOM tree here
 			m.mount(dom, OverlayContainer)
 		},
 		onbeforeupdate(v) {
 			children = v.children
 		},
-		onbeforeremove(v) {
+		onbeforeremove() {
 			// Add a class with fade-out exit animation
 			dom.classList.add('hide')
 			return new Promise(r => {
@@ -34,9 +36,9 @@ const Overlay = function() {
 			})
 		},
 		onremove() {
-			m.mount(dom, null)
 			// Destroy the overlay dom tree. Using m.mount with
 			// null triggers any modal children removal hooks.
+			m.mount(dom, null)
 			document.body.removeChild(dom)
 		},
 		view() {}

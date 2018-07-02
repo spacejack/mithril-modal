@@ -12,18 +12,21 @@ const App = function() {
 						onclick() {showModal = true}
 					},
 					'Open Modal'
-				)
-			),
-			showModal && m(Modal,
-				m('.modal-content',
-					m('h3', 'Hello Modal!'),
-					m('div',
-						m('button',
-							{
-								type: 'button',
-								onclick() {showModal = false}
-							},
-							'Close Modal'
+				),
+				// Even though this modal is nested within our App vdom,
+				// it will appear on top of everything else, appended
+				// to the end of document body.
+				showModal && m(Modal,
+					m('.modal-content',
+						m('h3', 'Hello Modal!'),
+						m('div',
+							m('button',
+								{
+									type: 'button',
+									onclick() {showModal = false}
+								},
+								'Close Modal'
+							)
 						)
 					)
 				)

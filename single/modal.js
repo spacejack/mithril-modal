@@ -2,6 +2,7 @@ const Modal = function() {
 	let dom
 	let children
 
+	// Container component we mount to a root-level DOM node
 	const ModalContainer = {
 		view: () => children
 	}
@@ -14,6 +15,7 @@ const Modal = function() {
 			// The modal class has a fade-in animation
 			dom.className = 'modal'
 			document.body.appendChild(dom)
+			// Mount a separate VDOM tree here
 			m.mount(dom, ModalContainer)
 		},
 		onbeforeupdate(v) {
@@ -27,9 +29,9 @@ const Modal = function() {
 			})
 		},
 		onremove() {
-			m.mount(dom, null)
 			// Destroy the modal dom tree. Using m.mount with
 			// null triggers any modal children removal hooks.
+			m.mount(dom, null)
 			document.body.removeChild(dom)
 		},
 		view() {}
