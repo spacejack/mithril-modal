@@ -1,13 +1,14 @@
-const Modal = function(v) {
+const Modal = function() {
 	let dom
-	let children = v.children
+	let children
 
 	const ModalContainer = {
 		view: () => children
 	}
 
 	return {
-		oncreate() {
+		oncreate(v) {
+			children = v.children
 			// Append a modal container to the end of body
 			dom = document.createElement('div')
 			// The modal class has a fade-in animation

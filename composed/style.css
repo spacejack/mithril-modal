@@ -1,0 +1,51 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	font-size: 16px;
+}
+
+.app {
+	padding: 2em;
+}
+
+@keyframes fade-in {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+@keyframes fade-out {
+	from {opacity: 1;}
+	to {opacity: 0;}
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255,255,255,0.75);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: fade-in 0.5s;
+}
+.overlay.hide {
+	animation: fade-out 0.5s;
+}
+
+.modal {
+	text-align: center;
+	padding: 2em 4em 3em 4em;
+	background-color: #FFF;
+	box-shadow: 0.5em 0.5em 2em #999;
+	border: #CCC 1px solid;
+}
+
+.modal-buttons {
+	margin-top: 1em;
+}
+.modal-buttons button {
+	margin: 0 0.5em;
+}
