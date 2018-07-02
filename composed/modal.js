@@ -25,7 +25,7 @@ const Modal = function(v) {
 		view({attrs: {title, content, buttons, onClose}}) {
 			if (clickedId != null) {
 				// We need to allow the Overlay component execute its exit
-				// animation. Because it is a child of this component it,
+				// animation. Because it is a child of this component, it
 				// will not fire when this component is removed.
 				// Instead, we need to remove it first before this component
 				// goes away.
