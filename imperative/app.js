@@ -12,8 +12,8 @@ const App = {
 						onclick() {
 							// Open a modal with this content...
 							openModal({
-								title: 'Hello Modal!',
-								content: 'This is an imperative modal example.',
+								title: () => 'Hello Modal!',
+								body: () => 'This is an imperative modal example.',
 								buttons: [
 									{id: 'ok', text: 'Ok'},
 									{id: 'cancel', text: 'Cancel'}

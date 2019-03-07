@@ -1,7 +1,11 @@
 /**
 @typedef {{
-	title: string
-	content?: any
+	// Title render function.
+	// Using a function allows us to keep content
+	// updated after the modal is opened.
+	title(): any
+	// Body render function
+	body?(): any
 	buttons?: {id: string; text: string}[]
 	redraw?: boolean
 	onclick?(id: string): void
@@ -9,7 +13,7 @@
 */
 
 /** @type {Options} */
-let options = {title: 'Modal'}
+let options = {title: () => 'Modal'}
 let isOpen = false
 
 /**
@@ -53,10 +57,10 @@ const Modal = {
 		return m('.modal',
 			m('.modal-box',
 				m('h3',
-					options.title
+					options.title()
 				),
-				options.content && m('.modal-content',
-					options.content
+				options.body != null && m('.modal-content',
+					options.body()
 				),
 				m('.modal-buttons',
 					options.buttons.map(b =>
